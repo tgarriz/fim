@@ -144,17 +144,68 @@ var markerClusters = new L.MarkerClusterGroup({
 var obrasLayer = L.geoJson(null);
 var obras = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
-    return L.marker(latlng, {
-      icon: L.icon({
-        iconUrl: "assets/img/theater.png",
-        iconSize: [24, 28],
-        iconAnchor: [12, 28],
-        popupAnchor: [0, -25]
-      }),
-      title: feature.properties.obra,
-      riseOnHover: true
-    });
-  },
+//    alert(feature.properties.tipo);
+    switch (feature.properties.tipo) {
+	case "vialidad":
+	  return L.marker(latlng, {
+	    icon: L.icon({
+		iconUrl: "assets/img/iconos/vialidad2.svg",
+		iconSize: [24, 28],
+		iconAnchor: [12, 28],
+		popupAnchor: [0, -25]
+	    }),
+	    title: feature.properties.obra,
+	    riseOnHover: true
+	  });
+	  break;
+	case "infraestructura":
+          return L.marker(latlng, {
+            icon: L.icon({
+              iconUrl: "assets/img/iconos/infraestructura2.svg",
+              iconSize: [24, 28],
+              iconAnchor: [12, 28],
+              popupAnchor: [0, -25]
+            }),
+	    title: feature.properties.obra,
+	    riseOnHover: true
+	  });
+	  break;
+	case "hidraulica":
+          return L.marker(latlng, {
+            icon: L.icon({
+              iconUrl: "assets/img/iconos/hidraulica2.svg",
+              iconSize: [24, 28],
+              iconAnchor: [12, 28],
+              popupAnchor: [0, -25]
+            }),
+            title: feature.properties.obra,
+            riseOnHover: true
+          });
+          break;
+	case "salud":
+	  return L.marker(latlng, {
+	    icon: L.icon({
+	      iconUrl: "assets/img/iconos/salud2.svg",
+	      iconSize: [24, 28],
+	      iconAnchor: [12, 28],
+	      popupAnchor: [0, -25]
+	    }),
+	    title: feature.properties.obra,
+	    riseOnHover: true
+	  });
+	  break;
+	case "saneamiento":
+	  return L.marker(latlng, {
+	    icon: L.icon({
+	      iconUrl: "assets/img/iconos/agua2.svg",
+	      iconSize: [24, 28],
+	      iconAnchor: [12, 28],
+	      popupAnchor: [0, -25]
+	    }),
+	    title: feature.properties.obra,
+	    riseOnHover: true
+	  });
+  }},
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
       var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Obra</th><td>" + feature.properties.obra + "</td></tr>" + "<tr><th>Cod.Partido</th><td>" + feature.properties.cod_part + "</td></tr>" + "<tr><th>Tipo</th><td>" + feature.properties.tipo + "</td></tr>" + "<tr><th>Informe Sigos</th><td><a class='url-break' href='http://abierto.geobasig.com.ar/wsdclient.php?ido=" + feature.properties.id_sigos + "' target='_blank'>" + feature.properties.id_sigos + "</a></td></tr>" +  "<table>";

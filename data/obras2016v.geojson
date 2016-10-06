@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "gid": 7, "id_sigos": 606, "obra": "Pluviales Barrio roca", "cod_part": "023", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -61.369688825395016, -37.964175499731489 ] } },
+{ "type": "Feature", "properties": { "gid": 10, "id_sigos": 3, "obra": "Ramales pluviales de Maestro Ferreyra", "cod_part": "131", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.75002898795082, -34.563305612356189 ] } },
+{ "type": "Feature", "properties": { "gid": 11, "id_sigos": 1, "obra": "Obras Hidráulicas en calles Pampa", "cod_part": "131", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.668481236418351, -34.56214591093449 ] } },
+{ "type": "Feature", "properties": { "gid": 15, "id_sigos": 769, "obra": "Deagues Barrio 3 de Junio", "cod_part": "120", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.166640370686629, -34.781077659718221 ] } },
+{ "type": "Feature", "properties": { "gid": 16, "id_sigos": 761, "obra": "Desagues Barrio Los Ciruelos - calle 1 entre 123 y 129", "cod_part": "120", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.240071998423524, -34.760421249367639 ] } },
+{ "type": "Feature", "properties": { "gid": 17, "id_sigos": 760, "obra": "Desagues Barrio San Carlos - Calle 101 entre 3A y 4A", "cod_part": "120", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.26379208205303, -34.776845954739692 ] } },
+{ "type": "Feature", "properties": { "gid": 18, "id_sigos": 758, "obra": "Desagues Kennedy Norte calle 130 y 51 - calle 51 y 129", "cod_part": "120", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.188960324519989, -34.807507105957477 ] } },
+{ "type": "Feature", "properties": { "gid": 19, "id_sigos": 756, "obra": "Desagues Villa Rial - Calle 167 a 169 - Calle 53 a 55", "cod_part": "120", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -58.155720881057711, -34.781894259793937 ] } },
+{ "type": "Feature", "properties": { "gid": 46, "id_sigos": 508, "obra": "Saneamiento Hídrico calles Barrio San Agustín", "cod_part": "010", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -60.094441448112121, -34.068292990354287 ] } },
+{ "type": "Feature", "properties": { "gid": 47, "id_sigos": 509, "obra": "Saneamiento Hídrico calle Cristobal Colón", "cod_part": "010", "tipo": "hidraulica", "certif": null }, "geometry": { "type": "Point", "coordinates": [ -60.090848623665359, -34.057732672262169 ] } },
+{"style": {"icon": { "iconUrl": "assets/img/iconos/vialidad2.png","iconSize": [32, 32],"iconAnchor": [16, 16] } } }, 
+]
+}
