@@ -89,7 +89,7 @@ function syncSidebar() {
   obras.eachLayer(function (layer) {
     if (map.hasLayer(obrasLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.obra + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/iconos/marcador.svg"></td><td class="feature-name">' + layer.feature.properties.obra + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -217,7 +217,7 @@ var obras = L.geoJson(null, {
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
         }
       });
-      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.obra + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/iconos/marcador.svg"></td><td class="feature-name">' + layer.feature.properties.obra + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       obrasSearch.push({
         name: layer.feature.properties.obra,
         address: layer.feature.properties.tipo,
@@ -242,7 +242,7 @@ map = L.map("map",
     }, 
     zoom: 6,
     center: [-36.31073, -60.25376],
-    layers: [cartoLight, ggl, ggl2, osm, wmsPartidos, markerClusters, highlight],
+    layers: [cartoLight, ggl, ggl2, wmsPartidos,osm , markerClusters, highlight],
     zoomControl: false,
     attributionControl: false
   }
@@ -293,7 +293,7 @@ var attributionControl = L.control({
 });
 attributionControl.onAdd = function (map) {
   var div = L.DomUtil.create("div", "leaflet-control-attribution");
-  div.innerHTML = "<span class='hidden-xs'>Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a> | </span><a href='#' onclick='$(\"#attributionModal\").modal(\"show\"); return false;'>Attribution</a>";
+  div.innerHTML = "<span class='hidden-xs'>Desarrollado por Dpto.Cartográfico | Geodeisa e Img.Satelitales</span>";
   return div;
 };
 map.addControl(attributionControl);
@@ -350,11 +350,9 @@ var baseLayers = {
 
 var groupedOverlays = {
   "Obras": {
-    "<img src='assets/img/theater.png' width='24' height='28'>&nbsp;F.I.M.": obrasLayer,
-  }/*,
-  "Referencia": {
-    "Partidos": wmsPartidos,
-  }*/
+    "<img src='assets/img/iconos/provincia.png' width='24' height='24'>&nbsp;Provincia": wmsPartidos,
+    "<img src='assets/img/iconos/marcador.svg' width='24' height='28'>&nbsp;F.I.M.": obrasLayer
+  }
 };
 
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
@@ -484,7 +482,7 @@ legend.onAdd = function (map) {
       '<img alt="salud" width="20" height="24" src="assets/img/iconos/salud2.svg"> Obr.Salud<br>' +
       '<img alt="infraetructura" width="20" height="24" src="assets/img/iconos/infraestructura2.svg"> O.Infraestructura<br>' +
       '<img alt="hidraulica" width="20" height="24" src="assets/img/iconos/hidraulica2.svg"> Obr.Hidraulica<br>' +
-      '<img alt="saneamiento" width="20" height="24" src="assets/img/iconos/agua2.svg"> Obr.Saneamiento<br>';
+      '<img alt="saneamiento" width="16" height="20" src="assets/img/iconos/agua2.svg"> Obr.Saneamiento<br>';
     return div;
 };
  
