@@ -299,12 +299,12 @@ attributionControl.onAdd = function (map) {
 map.addControl(attributionControl);
 
 var zoomControl = L.control.zoom({
-  position: "bottomright"
+  position: "topleft"
 }).addTo(map);
 
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
-  position: "bottomright",
+  position: "topleft",
   drawCircle: true,
   follow: true,
   setView: true,
@@ -351,10 +351,10 @@ var baseLayers = {
 var groupedOverlays = {
   "Obras": {
     "<img src='assets/img/theater.png' width='24' height='28'>&nbsp;F.I.M.": obrasLayer,
-  },
+  }/*,
   "Referencia": {
     "Partidos": wmsPartidos,
-  }
+  }*/
 };
 
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
@@ -474,6 +474,21 @@ $(document).one("ajaxStop", function () {
   $(".twitter-typeahead").css("display", "block");
 });
 
+// Insertando una leyenda en el mapa
+var legend = L.control({position: 'bottomright'});
+ 
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML +=
+      '<img alt="vialidad" width="20" height="24" src="assets/img/iconos/vialidad2.svg"> Obr.Viales<br>' +
+      '<img alt="salud" width="20" height="24" src="assets/img/iconos/salud2.svg"> Obr.Salud<br>' +
+      '<img alt="infraetructura" width="20" height="24" src="assets/img/iconos/infraestructura2.svg"> O.Infraestructura<br>' +
+      '<img alt="hidraulica" width="20" height="24" src="assets/img/iconos/hidraulica2.svg"> Obr.Hidraulica<br>' +
+      '<img alt="saneamiento" width="20" height="24" src="assets/img/iconos/agua2.svg"> Obr.Saneamiento<br>';
+    return div;
+};
+ 
+legend.addTo(map);
 // Leaflet patch to make layer control scrollable on touch browsers
 var container = $(".leaflet-control-layers")[0];
 if (!L.Browser.touch) {
@@ -483,3 +498,4 @@ if (!L.Browser.touch) {
 } else {
   L.DomEvent.disableClickPropagation(container);
 }
+
