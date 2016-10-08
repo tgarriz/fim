@@ -107,12 +107,13 @@ var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 });
-var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+/*var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
    maxZoom: 19
-});
+});*/
 var ggl = new L.Google();
 var ggl2 = new L.Google('HYBRID');
+var ggl3 = new L.Google('ROADMAP');
 
 /* Overlay Layers */
 var highlight = L.geoJson(null);
@@ -242,7 +243,7 @@ map = L.map("map",
     }, 
     zoom: 6,
     center: [-36.31073, -60.25376],
-    layers: [cartoLight, ggl, ggl2, wmsPartidos,osm , markerClusters, highlight],
+    layers: [cartoLight, ggl, ggl2, ggl3, wmsPartidos, markerClusters, highlight],
     zoomControl: false,
     attributionControl: false
   }
@@ -293,7 +294,7 @@ var attributionControl = L.control({
 });
 attributionControl.onAdd = function (map) {
   var div = L.DomUtil.create("div", "leaflet-control-attribution");
-  div.innerHTML = "<span class='hidden-xs'>Desarrollado por Dpto.Cartográfico | Geodeisa e Img.Satelitales</span>";
+  div.innerHTML = "<span class='hidden-xs'>Desarrollado por Dpto.Cartográfico | Geodesia e Img.Satelitales</span>";
   return div;
 };
 map.addControl(attributionControl);
@@ -343,8 +344,8 @@ if (document.body.clientWidth <= 767) {
 
 var baseLayers = {
   "Street Map": cartoLight,
-  "OSM": osm,
-  "Google": ggl,
+  "Google Road": ggl3,
+  "Google Satelital": ggl,
   "Google Hybrid": ggl2
 };
 
@@ -435,7 +436,7 @@ $(document).one("ajaxStop", function () {
     displayKey: "obra",
     source: obrasBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/theater.png' width='24' height='28'>&nbsp;Obras</h4>",
+      header: "<h4 class='typeahead-header'><img src='assets/img/iconos/marcador.svg' width='24' height='28'>&nbsp;Obras</h4>",
       suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{tipo}}</small>"].join(""))
     }
   }, {
@@ -474,18 +475,17 @@ $(document).one("ajaxStop", function () {
 
 // Insertando una leyenda en el mapa
 var legend = L.control({position: 'bottomright'});
- 
 legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML +=
+    var div = L.DomUtil.create('div', 'legend hidden-xs');
+    div.innerHTML += 
       '<img alt="vialidad" width="20" height="24" src="assets/img/iconos/vialidad2.svg"> Obr.Viales<br>' +
       '<img alt="salud" width="20" height="24" src="assets/img/iconos/salud2.svg"> Obr.Salud<br>' +
       '<img alt="infraetructura" width="20" height="24" src="assets/img/iconos/infraestructura2.svg"> O.Infraestructura<br>' +
       '<img alt="hidraulica" width="20" height="24" src="assets/img/iconos/hidraulica2.svg"> Obr.Hidraulica<br>' +
-      '<img alt="saneamiento" width="16" height="20" src="assets/img/iconos/agua2.svg"> Obr.Saneamiento<br>';
+      '<img alt="saneamiento" width="16" height="20" src="assets/img/iconos/agua2.svg"> Obr.Saneamiento<br>' ;
+//    div.addClass("hidden-xs");
     return div;
 };
- 
 legend.addTo(map);
 // Leaflet patch to make layer control scrollable on touch browsers
 var container = $(".leaflet-control-layers")[0];
