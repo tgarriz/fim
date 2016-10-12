@@ -102,7 +102,7 @@ function syncSidebar() {
   });
 }
 
-/* Basemap Layers */
+/* Basemap Layers 
 var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
@@ -111,9 +111,9 @@ var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net
    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
    maxZoom: 19
 });*/
+var ggl3 = new L.Google('ROADMAP');
 var ggl = new L.Google();
 var ggl2 = new L.Google('HYBRID');
-var ggl3 = new L.Google('ROADMAP');
 
 /* Overlay Layers */
 var highlight = L.geoJson(null);
@@ -243,7 +243,7 @@ map = L.map("map",
     }, 
     zoom: 6,
     center: [-36.31073, -60.25376],
-    layers: [cartoLight, ggl, ggl2, ggl3, wmsPartidos, markerClusters, highlight],
+    layers: [ggl3, ggl2, ggl, wmsPartidos, markerClusters, highlight],
     zoomControl: false,
     attributionControl: false
   }
@@ -343,10 +343,10 @@ if (document.body.clientWidth <= 767) {
 }
 
 var baseLayers = {
-  "Street Map": cartoLight,
+  //"Street Map": cartoLight,
   "Google Road": ggl3,
   "Google Satelital": ggl,
-  "Google Hybrid": ggl2
+  "Google Hybrid": ggl2,
 };
 
 var groupedOverlays = {
